@@ -1,0 +1,1 @@
+docker -ti -v /tmp:/tmp test:testrelease1 /bin/bash
