@@ -26,6 +26,18 @@ ID                           HOSTNAME  STATUS  AVAILABILITY  MANAGER STATUS
 5fv4xd7zk191rp8mciwshym0l    Node1     Ready   Active        
 6iwa81l5ss5gaupxwrz9i6f3c    Node0     Ready   Active        
 
+# Listing services in docker swarm
+docker service ls
+# Create service in docker swarm
+Error: image library/service:latest not found
+root@Manager0:~# docker service create --name du centos du 
+f2xwvptlqhabodnjn4j4t0fj4
+root@Manager0:~# 
+root@Manager0:~# 
+root@Manager0:~# docker service ls
+ID            NAME  REPLICAS  IMAGE   COMMAND
+f2xwvptlqhab  du    0/1       centos  du
 
-# Create scaling service in docker swarm 
+# Scale up services
+docker service scale helloworld=5
 # Remove node from swarm
