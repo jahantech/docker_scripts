@@ -1,0 +1,31 @@
+#To start docker swarm and listen on all the interfaces of the machine
+docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+# To initialise a swarm 
+docker swarm init --advertise-addr 192.168.99.121
+# To Join the swarm as manager 
+
+# Join swarm as node
+ docker swarm join \
+    --token SWMTKN-1-3tv9ndtw9l9m5zhtrm2vp50b9597i3z6huhkam5cie4es0y353-6ir6bb0ht985c1dqoa1bvfggz \
+    192.168.1.102:2377
+# List nodes in the swarm
+docker node list
+# To drain manager so that tasks are not assigned to it
+docker node update --availability drain manager0
+
+root@Manager0:~# docker node list
+ID                           HOSTNAME  STATUS  AVAILABILITY  MANAGER STATUS
+2of7g9psv8u2jls6jjwpa3dqo *  Manager0  Ready   Active        Leader
+5fv4xd7zk191rp8mciwshym0l    Node1     Ready   Active        
+6iwa81l5ss5gaupxwrz9i6f3c    Node0     Ready   Active        
+root@Manager0:~# docker node update --availability drain Manager0
+Manager0
+root@Manager0:~# docker node list
+ID                           HOSTNAME  STATUS  AVAILABILITY  MANAGER STATUS
+2of7g9psv8u2jls6jjwpa3dqo *  Manager0  Ready   Drain         Leader
+5fv4xd7zk191rp8mciwshym0l    Node1     Ready   Active        
+6iwa81l5ss5gaupxwrz9i6f3c    Node0     Ready   Active        
+
+
+# Create scaling service in docker swarm 
+# Remove node from swarm
