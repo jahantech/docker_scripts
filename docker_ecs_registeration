@@ -1,0 +1,15 @@
+1) Retrieve the docker login command that you can use to authenticate your Docker client to your registry:
+aws ecr get-login --region eu-west-1
+
+2) Run the docker login command that was returned in the previous step.
+3) Build your Docker image using the following command. 
+docker build -t docker-images .
+
+4) After the build completes, tag your image so you can push the image to this repository:
+docker tag docker-images:latest ACCOUNTNUMBER.dkr.ecr.eu-west-1.amazonaws.com/docker-images:latest
+
+5) Run the following command to push this image to your newly created AWS repository:
+docker push ACCOUNTNUMBER.dkr.ecr.eu-west-1.amazonaws.com/docker-images:latest
+
+
+ECR URL for future references:arn:aws:ecr:eu-west-1:ACCOUNTNUMBER:repository/docker-images
