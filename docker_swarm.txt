@@ -42,3 +42,29 @@ f2xwvptlqhab  du    0/1       centos  du
 docker service scale helloworld=5
 # Running a webservice in docker swarm 
 docker service create --replicas 2 --name www-service --publish 80:80/tcp www_server
+
+#Autoscaling test
+  270  docker build -t hello-service . 
+  271  docker images
+  272  docker run hello-service:latest
+  274  docker images
+  280  docker build -t hello-service . 
+  281  docker service
+  282  docker service scale
+  283  docker service scale hello-service=10
+  288  docker service update
+  289  docker ps 
+  290  docker service update
+  291  docker service update --help
+  292  docker service update --image hello-service:latest hello-service
+  293  docker ps
+  297  docker build -t hello-service:v1.2 . 
+  298  docker service update --image hello-service:v1.2 hello-service
+  299  docker service ps
+  300  docker service ps hello-service
+  301  docker service scale hello-service=2
+  302  docker service ps hello-service
+  303  docker service ps 
+  308  docker service ps hello-service 
+  311  docker build -t hello-service:v1.3 . 
+  313  docker service update --image hello-service:v1.3 hello-service
