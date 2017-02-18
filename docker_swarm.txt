@@ -40,4 +40,5 @@ f2xwvptlqhab  du    0/1       centos  du
 
 # Scale up services
 docker service scale helloworld=5
-# Remove node from swarm
+# Running a webservice in docker swarm 
+docker service create --replicas 2 --name www-service --publish 80:80/tcp www_server
