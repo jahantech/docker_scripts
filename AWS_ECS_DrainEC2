@@ -1,0 +1,1 @@
+aws autoscaling put-lifecycle-hook --lifecycle-hook-name ecs-drain-hook --auto-scaling-group-name CUSTOM-CLUSTER --lifecycle-transition autoscaling:EC2_INSTANCE_TERMINATING --notification-target-arn arn:aws:sns:eu-west-1:12345678:CUSTOM-SNS-TOPIC --role-arn arn:aws:iam::12345678:role/ecsAutoscaleRole
