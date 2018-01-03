@@ -1,0 +1,1 @@
+ docker save jahans:1.0 > jahans-img.tar
